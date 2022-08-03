@@ -1,4 +1,4 @@
 com\korea\sample\TestDTO.class
 com\korea\mapper\TimeMapper.class
-com\korea\sample\TestDTO$TestDTOBuilder.class
 com\korea\controller\HomeController.class
+com\korea\sample\TestDTO$TestDTOBuilder.class
