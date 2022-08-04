@@ -11,5 +11,5 @@ public class BoardDTO {
 	private String content;
 	private String writer;
 	private Date regdate;
-	private Date updateDat;
+	private Date updateDate;
 }

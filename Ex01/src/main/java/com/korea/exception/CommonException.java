@@ -21,6 +21,7 @@ public class CommonException {
 		return "error_page";
 	}
 	
+	
 	@ExceptionHandler(NoHandlerFoundException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public String handle404(NoHandlerFoundException ex) {

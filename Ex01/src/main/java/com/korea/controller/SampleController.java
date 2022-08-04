@@ -129,7 +129,7 @@ public class SampleController {
 		Integer page = 11;
 		
 		
-		rttr.addFlashAttribute("dto", dto);
+		rttr.addFlashAttribute("dto", dto);		//key와 value를 전달
 		rttr.addFlashAttribute("page", page);
 		
 		log.info("redirect's dto :" + dto.toString());

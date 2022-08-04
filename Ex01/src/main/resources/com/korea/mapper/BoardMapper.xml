@@ -22,4 +22,94 @@
 	<update id="updateXML">
 		update tblboard set title=#{title},content=#{content}, writer=#{writer}, updateDate=sysdate where bno = #{bno}
 	</update>
+	
+	<select id="getListWithPaging" resultType = "com.korea.domain.BoardDTO">
+		<![CDATA[
+			select rn, bno, title, content, writer, regdate, updatedate from 
+			(select /*+INDEX_DESC (tblboard pk_board)*/ rownum rn, bno,title,content,writer, regdate, updatedate 
+			from tblboard 
+		]]>
+		<if test = 'type!=null'>
+			where
+			<choose>
+				<when test = 'type.equals("T")'>
+					(title like '%'||#{keyword}||'%') and
+				</when>
+				
+				<when test = 'type.equals("C")'>
+					(content like '%'||#{keyword}||'%') and
+				</when>
+				
+				<when test = 'type.equals("W")'>
+					(writer like '%'||#{keyword}||'%') and
+				</when>
+				<otherwise>
+				</otherwise>
+			</choose>
+		</if>
+		<![CDATA[
+		 rownum <= #{pageNum} * #{amount}
+		 )
+ 		where rn > (#{pageNum}-1) * #{amount}
+ 		]]>
+	</select>
+	
+	
+	<!-- 단일 파라미터 적용  -->
+	<!-- <select id="test" resultType = "com.korea.domain.BoardDTO">
+		<![CDATA[
+		select * from tblboard where bno = #{bno}
+		]]>
+	</select> -->
+	
+	<!-- 포함문자 검색 -->
+	<!-- <select id="test" resultType = "com.korea.domain.BoardDTO">
+		<![CDATA[
+		select * from tblboard where content like '%'||#{content}||'%'
+		]]>
+	</select> -->
+	
+	<!-- 복수 파라미터 적용 -->
+	<!-- <update id="test">
+		<![CDATA[
+		update tblboard set title = #{param1}, content=#{param2} where bno = #{param3}
+		]]>
+	</update> -->
+	
+	<!-- 복수 파라미터 클레스-->
+	<!-- <update id="test">
+		<![CDATA[
+		update tblboard set title = #{title}, content=#{content} where bno = #{bno}
+		]]>
+	</update> -->
+	
+	<!-- 복수 HashMap insert -->
+	<!-- <insert id="test" parameterType = "hashmap">
+		<![CDATA[
+		insert into tblboard(bno,title,content,writer) values(#{key1},#{key2},#{key3},#{key4})
+		]]>
+	</insert> -->
+	<!-- 복수 HashMap Select -->
+	
+	<select id="test" parameterType = "hashmap" resultType = "com.korea.domain.BoardDTO">
+			<![CDATA[
+			select * from tblboard where 
+			]]>
+			<choose>
+				<when test='type.equals("T")'>
+					title like '%'||#{title}||'%'
+				</when>
+				
+				<when test='type.equals("C")'>
+					content like '%'||#{content}||'%'
+				</when>
+				
+				<when test='type.equals("W")'>
+					writer like '%'||#{writer}||'%'
+				</when>
+				<otherwise>
+				</otherwise>
+			</choose>
+			
+	</select>
 </mapper>
