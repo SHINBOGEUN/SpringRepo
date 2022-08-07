@@ -2,6 +2,9 @@ package com.korea.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.apache.logging.log4j.core.appender.rewrite.MapRewritePolicy.Mode;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -21,6 +24,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.korea.domain.RestSampleDTO;
 import com.korea.domain.SampleDTO;
 import com.korea.domain.SampleDTOList;
 import com.korea.domain.TodoDTO;
@@ -194,4 +199,17 @@ public class SampleController {
 			log.info("size : " + file.getSize());
 		});
 	}
+	
+	@GetMapping("/ticket")
+	public String showpage() {
+		return "ticketform";
+	}
+	
+	@GetMapping("/replies/form")
+	public String reqreplytest() {
+		return "replytestform";
+	}
+	
+	
+	
 }

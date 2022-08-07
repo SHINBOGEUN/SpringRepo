@@ -10,9 +10,15 @@
 
 
 <%@include file="/resources/includes/link.jsp" %>
+<script type="text/javascript" src="/resources/js/reply.js"></script>
 </head>
 <body>
+	<script>
+		console.log(replyService);
+	</script>
+
 <%@page import="java.util.*, com.korea.domain.*" %>
+
 	<%
 		BoardDTO board = (BoardDTO)request.getAttribute("board");
 		// out.println("board : "+board);
