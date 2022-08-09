@@ -1,6 +1,8 @@
 package com.korea.controller;
 
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import com.korea.domain.Board1DTO;
 import com.korea.mapper.TimeMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -25,5 +28,10 @@ public class MybatisSpring {
 		log.info("ANNO : " +timeMapper.getTime());
 		log.info("XML : " +timeMapper.getTime2());
 	}
-
+	
+	@Test
+	public void test2() {
+		List<Board1DTO> list = timeMapper.SelectAll();
+		list.forEach(dto->log.info(dto));
+	}
 }
