@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.korea.domain.BoardDTO;
+import com.korea.domain.Criteria;
 import com.korea.mapper.BoardMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -39,14 +40,20 @@ public class BoardMapperTest {
 //		log.info(result);
 		
 		//Update
-		BoardDTO dto = new BoardDTO();
-		dto.setBno(98L);
-		dto.setTitle("수정 제목1");
-		dto.setContent("수정 내용1");
-		dto.setWriter("수정된 작성자1");
+//		BoardDTO dto = new BoardDTO();
+//		dto.setBno(98L);
+//		dto.setTitle("수정 제목1");
+//		dto.setContent("수정 내용1");
+//		dto.setWriter("수정된 작성자1");
+//		
+//		
+//		mapper.updateXML(dto);
 		
 		
-		mapper.updateXML(dto);
+		Criteria cri = new Criteria();
+		mapper.getTotalCount(cri);
+		
+		
 	}
 	
 }

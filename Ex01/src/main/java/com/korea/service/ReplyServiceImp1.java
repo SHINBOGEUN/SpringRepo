@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.korea.domain.Criteria;
 import com.korea.domain.ReplyDTO;
+import com.korea.domain.ReplyPageDTO;
 import com.korea.mapper.ReplyMapper;
 
 import lombok.AllArgsConstructor;
@@ -47,6 +48,11 @@ public class ReplyServiceImp1 implements ReplyService{
 	public List<ReplyDTO> getList(Criteria cri, Long bno) {
 		log.info("get reply List of a Board" + bno);
 		return mapper.getListWithPaging(cri, bno);
+	}
+
+	@Override
+	public ReplyPageDTO getListPage(Criteria cri, Long bno) {
+		return new ReplyPageDTO(mapper.getCountByBno(bno), mapper.getListWithPaging(cri, bno));
 	}
 
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.korea.domain.Criteria;
 import com.korea.domain.ReplyDTO;
+import com.korea.domain.ReplyPageDTO;
 
 public interface ReplyService {
 	//등록
@@ -16,4 +17,7 @@ public interface ReplyService {
 	public int remove(Long rno);
 	//페이징
 	public List<ReplyDTO> getList(Criteria cri, Long bno);
+	
+	//댓글 수 처리
+	public ReplyPageDTO getListPage(Criteria cri, Long bno);
 }

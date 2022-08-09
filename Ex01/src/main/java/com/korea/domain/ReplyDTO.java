@@ -15,4 +15,5 @@ public class ReplyDTO {
 	private Date replyDate;
 	private Date updateDate;
 	
+	
 }

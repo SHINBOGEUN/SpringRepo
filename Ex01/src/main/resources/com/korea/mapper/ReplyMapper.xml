@@ -22,6 +22,14 @@
 	</delete>
 	
 	<select id= "getListWithPaging" resultType= "com.korea.domain.ReplyDTO">
-		select rno, bno, reply replyer, replydate, updatedate from tblreply where bno = #{bno} order by rno asc
+		select rno, bno, reply ,replyer, replydate, updatedate from tblreply where bno = #{bno} order by rno asc
 	</select>
+	
+	<!-- 댓글 개수  -->
+	<select id="getCountByBno" resultType = "int">
+		<![CDATA[
+			select count(rno) from tblreply where bno = #{bno}
+		]]>
+	</select>
+	
 </mapper>
