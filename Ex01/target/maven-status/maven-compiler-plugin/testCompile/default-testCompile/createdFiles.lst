@@ -1,6 +1,6 @@
 com\korea\controller\MybatisSpring.class
 com\korea\controller\Mybatis.class
 com\korea\controller\DBconn.class
+com\korea\controller\log4j.class
 com\korea\controller\HikariCP.class
 com\korea\controller\lombok.class
-com\korea\controller\log4j.class
